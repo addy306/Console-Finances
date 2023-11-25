@@ -197,8 +197,7 @@ function totalMonthsCalc(date) {
   return uniqueMonths.length;
 }
 
-/* Store the Total number of months in dataset */
-var totalMonths = totalMonthsCalc(finances);
+
 
 /* Calculation for the net total amount of Profit/Losses over the entire period */
 function netTotalCalc(finances) {
@@ -211,8 +210,6 @@ function netTotalCalc(finances) {
 
   return netTotal;
 }
-/* Store the Net Total Amount */
-var netTotalAmount = netTotalCalc(finances);
 
 /* Calculation of the average of the changes in Profit/Losses over the entire period*/
 function averageChangeCalc(finances) {
@@ -236,13 +233,46 @@ function averageChangeCalc(finances) {
 
   return roundedAverageChange;
 }
+/* Calculate the greatest increase in Profit/Losses (date and amount) over the entire period*/
+function greatestIncreaseCalc(finances) {
+  let greatestIncrease = 0;
+  let greatestIncreaseDate = '';
 
-// Call the function and log the result
-const averageChange = averageChangeCalc(finances);
+  for (let i = 1; i < finances.length; i++) {
+    // Calculate the difference between the current month and the previous month
+    let currentIncrease = finances[i][1] - finances[i - 1][1];
 
-// Console display 
+    // Check if the current increase is greater than the current greatest increase
+    if (currentIncrease > greatestIncrease) {
+      greatestIncrease = currentIncrease;
+      greatestIncreaseDate = finances[i][0];
+    }
+  }
+
+  return {
+    date: greatestIncreaseDate,
+    amount: greatestIncrease
+  };
+}
+
+
+
+/* Call  each  function and store in a variable */
+
+// Store the Total number of months in dataset 
+var totalMonths = totalMonthsCalc(finances);
+/* Store the Net Total Amount */
+var netTotalAmount = netTotalCalc(finances);
+/* Store the average change value */
+var averageChange = averageChangeCalc(finances);
+/* Store the greatest increase result*/
+const increaseResult = greatestIncreaseCalc(finances);
+
+
+/* Console log display of all calculation results */
 console.log(`Financial Analysis
 -----------------
 Total Months: ${totalMonths}
 Total: $${netTotalAmount}
-Average change: ${averageChange}`);
+Average change: ${averageChange}
+Greatest increase in profit/losses: ${increaseResult.date} ($${increaseResult.amount}) `);
