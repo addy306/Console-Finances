@@ -176,7 +176,7 @@ var finances = [
 ];
 
 /* Calculation for total number of months included in the dataset */
-function getTotalMonths(date) {
+function totalMonthsCalc(date) {
   // Create an array to store unique month-year combinations
   var uniqueMonths = [];
 
@@ -198,9 +198,24 @@ function getTotalMonths(date) {
 }
 
 /* Total number of months in dataset */
-var totalMonths = getTotalMonths(finances);
+var totalMonths = totalMonthsCalc(finances);
+
+/* Calculation for the net total amount of Profit/Losses over the entire period */
+function netTotalCalc(finances) {
+  let netTotal = 0;
+
+  for (let i = 0; i < finances.length; i++) {
+    // Add the second element (index 1) of each sub-array to the netTotal
+    netTotal += finances[i][1];
+  }
+
+  return netTotal;
+}
+
+const netTotalAmount = netTotalCalc(finances);
 
 // Console display 
 console.log(`Financial Analysis
 ------------------------
-Total number of months: ${totalMonths}`);
+Total Months: ${totalMonths}
+Total: $${netTotalAmount}`);
