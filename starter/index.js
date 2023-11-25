@@ -197,7 +197,7 @@ function totalMonthsCalc(date) {
   return uniqueMonths.length;
 }
 
-/* Total number of months in dataset */
+/* Store the Total number of months in dataset */
 var totalMonths = totalMonthsCalc(finances);
 
 /* Calculation for the net total amount of Profit/Losses over the entire period */
@@ -211,11 +211,38 @@ function netTotalCalc(finances) {
 
   return netTotal;
 }
+/* Store the Net Total Amount */
+var netTotalAmount = netTotalCalc(finances);
 
-const netTotalAmount = netTotalCalc(finances);
+/* Calculation of the average of the changes in Profit/Losses over the entire period*/
+function averageChangeCalc(finances) {
+  let totalChange = 0;
+
+  for (let i = 1; i < finances.length; i++) {
+    // Calculate the change from the current month to the previous month
+    const currentMonthValue = finances[i][1];
+    const previousMonthValue = finances[i - 1][1];
+    const change = currentMonthValue - previousMonthValue;
+
+    // Accumulate the total change
+    totalChange += change;
+  }
+
+  // Calculate the average change
+  const averageChange = totalChange / (finances.length - 1);
+
+  // Round the average change to 2 decimal places
+  const roundedAverageChange = Math.round(averageChange * 100) / 100;
+
+  return roundedAverageChange;
+}
+
+// Call the function and log the result
+const averageChange = averageChangeCalc(finances);
 
 // Console display 
 console.log(`Financial Analysis
-------------------------
+-----------------
 Total Months: ${totalMonths}
-Total: $${netTotalAmount}`);
+Total: $${netTotalAmount}
+Average change: ${averageChange}`);
