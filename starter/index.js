@@ -168,6 +168,28 @@ function greatestIncreaseCalc(finances) {
   };
 }
 
+/*Calculation for the greatest decrease in Profit/Losses (date and amount) over the entire period. */
+function greatestDecreaseCalc(finances) {
+  let greatestDecrease = {
+    date: '',
+    amount: Infinity, // Start with positive infinity so that any decrease will be smaller
+  };
+
+  for (let i = 1; i < finances.length; i++) {
+    const currentMonth = finances[i];
+    const currentAmount = currentMonth[1];
+
+    // Calculate the decrease by subtracting the current amount from the previous amount
+    const decrease = currentAmount - finances[i - 1][1];
+
+    if (decrease < greatestDecrease.amount) {
+      greatestDecrease.date = currentMonth[0];
+      greatestDecrease.amount = decrease;
+    }
+  }
+
+  return greatestDecrease;
+}
 
 
 /* Call  each  function and store in a variable */
@@ -179,8 +201,9 @@ var netTotalAmount = netTotalCalc(finances);
 /* Store the average change value */
 var averageChange = averageChangeCalc(finances);
 /* Store the greatest increase result*/
-const increaseResult = greatestIncreaseCalc(finances);
-
+var increaseResult = greatestIncreaseCalc(finances);
+/* Store the greatest decrease result*/
+const decreaseResult = greatestDecreaseCalc(finances);
 
 /* Console log display of all calculation results */
 console.log(`Financial Analysis
@@ -188,4 +211,8 @@ console.log(`Financial Analysis
 Total Months: ${totalMonths}
 Total: $${netTotalAmount}
 Average change: ${averageChange}
-Greatest increase in profit/losses: ${increaseResult.date} ($${increaseResult.amount}) `);
+Greatest increase in profit/losses: ${increaseResult.date} 
+($${increaseResult.amount})
+Greatest decrease in profit/losses: ${decreaseResult.date} 
+($${decreaseResult.amount})`);
+
