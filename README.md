@@ -1,9 +1,9 @@
 # Console-Finances
 
-<!-- PROJECT LOGO -->
+<!-- Developer Signature and github details -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/addy306/Console-Finances">
     <img src="images/AS-logo.png" alt="Logo" width="80" height="80">
   </a>
 
