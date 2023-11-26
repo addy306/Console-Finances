@@ -211,8 +211,6 @@ console.log(`Financial Analysis
 Total Months: ${totalMonths}
 Total: $${netTotalAmount}
 Average change: ${averageChange}
-Greatest increase in profit/losses: ${increaseResult.date} 
-($${increaseResult.amount})
-Greatest decrease in profit/losses: ${decreaseResult.date} 
-($${decreaseResult.amount})`);
+Greatest increase in profit/losses: ${increaseResult.date} ($${increaseResult.amount})
+Greatest decrease in profit/losses: ${decreaseResult.date} ($${decreaseResult.amount})`);
 
