@@ -25,26 +25,44 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project Analyzes the financial records of a company with javascript. 
+This project analyzes the financial records of a company with Javascript. 
+I calculated each of the following below :
 
+- The total number of months included in the dataset.
+
+- The net total amount of Profit/Losses over the entire period.
+
+- The average of the changes in Profit/Losses over the entire period.
+
+- Tracked what the total change in Profit/Losses are from month to month and then found the average.
+
+- The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+- The greatest decrease in Profit/Losses (date and amount) over the entire period.-
+
+After all the calculations, I console logged all results. The result can be viewed ;
+- By right clicking on the browser(deployed website) .
+- Click on inspect
+- Click on console at the bottom and the result of the calculations will be revealed.
+
+
+## Webpage Display
+
+### HTML Browser Page
+![Screenshot of Webpage](./images/html-browser-view.JPG)
+
+### Javascript Console Page
+![Screenshot of Webpage](./images/js-console-view.JPG)
 ### Built With
 
 * HTML
 * Javascript
 
-
-## Webpage Features
-
-### HTML Browser Page
-![Screenshot of Webpage](./images/bootstrap-portfolio.jpg)
-
-### Javascript Console Page
-![Screenshot of Webpage](./images/portfolio-sect.jpg)
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
 
 
 
